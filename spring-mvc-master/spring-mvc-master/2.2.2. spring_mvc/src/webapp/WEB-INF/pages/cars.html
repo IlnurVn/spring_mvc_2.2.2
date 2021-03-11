@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <style>
+        table th, table td {
+            padding: 5px;
+        }
+
+        .row {
+            font-style: italic;
+        }
+
+        .even-row {
+            color: black;
+        }
+
+        .odd-row {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<h1>CARS</h1>
+
+<!--<div>-->
+<!--    <p th:text="#{CARS}"/>-->
+
+
+
+<table bordercolor="blue" border="2" width="40%">
+    <tr>
+        <th> -- No --</th>
+        <th> -- Model --</th>
+        <th> -- Series --</th>
+    </tr>
+
+    <tr th:each="car, state : ${carList}"
+        class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+        <td th:utext="${state.count}">id</td>
+        <td th:utext="${car.getModel()}">Model</td>
+        <td th:utext="${car.getSeries()}">Series</td>
+
+        <!--            <td th:utext="${car.getId()}"></td>-->
+        <!--            <td th:utext="${car.getModel()}"></td>-->
+        <!--            <td th:utext="${car.getSeries()}"></td>-->
+    </tr>
+</table>
+<!--</div>-->
+</body>
+</html>
